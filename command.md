@@ -1,30 +1,25 @@
-
-Paste:
-
-```md
 # Commands Used in Live Monitoring
 
 ## Live SSH Monitoring
-```bash
+
 sudo journalctl -f | grep -i ssh
 
 
-# when someone unauthorized try to get inside ites system IP will show and you can block them using 
+# When Someone Unauthorized Try To Get Inside Then Attacker System IP Will Show And You Can Block Them Using 
 
 ## Detection and Blocking (Simulated)
 
-Failed SSH login attempts were detected using:
+Failed SSH Login Attempts Were Detected Using:
 
-```bash
 sudo journalctl | grep -i "Failed password" | awk '{print $(NF-3)}'
 
 
 #Simulated Blocking of Attacker IP
-#here replce attacker with the IP you Detcted
+#Here Replce Attacker IP With The IP You Detcted
 sudo iptables -A INPUT -s <attacker-ip> -j DROP
 
 
-#for checking Blocked IPs
+#For Checking Blocked IPs
 
 sudo iptables -L -n
 
